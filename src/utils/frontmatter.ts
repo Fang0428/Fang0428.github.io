@@ -2,6 +2,7 @@ import getReadingTime from 'reading-time';
 import { toString } from 'mdast-util-to-string';
 import { visit } from 'unist-util-visit';
 import type { RehypePlugin, RemarkPlugin } from '@astrojs/markdown-remark';
+import type { Root, Element } from 'hast';
 
 export const readingTimeRemarkPlugin: RemarkPlugin = () => {
   return function (tree, file) {
@@ -16,11 +17,11 @@ export const readingTimeRemarkPlugin: RemarkPlugin = () => {
 };
 
 export const responsiveTablesRehypePlugin: RehypePlugin = () => {
-  return function (tree) {
+  return function (tree: Root) {
     if (!tree.children) return;
 
     for (let i = 0; i < tree.children.length; i++) {
-      const child = tree.children[i] as any;
+      const child = tree.children[i] as Element;
 
       if (child.type === 'element' && child.tagName === 'table') {
         tree.children[i] = {
@@ -28,7 +29,7 @@ export const responsiveTablesRehypePlugin: RehypePlugin = () => {
           tagName: 'div',
           properties: { style: 'overflow:auto' },
           children: [child],
-        } as any;
+        } satisfies Element;
         i++;
       }
     }
@@ -36,10 +37,10 @@ export const responsiveTablesRehypePlugin: RehypePlugin = () => {
 };
 
 export const lazyImagesRehypePlugin: RehypePlugin = () => {
-  return function (tree) {
+  return function (tree: Root) {
     if (!tree.children) return;
 
-    visit(tree as any, 'element', function (node: any) {
+    visit(tree, 'element', function (node: Element) {
       if (node.tagName === 'img') {
         node.properties = node.properties || {};
         node.properties.loading = 'lazy';
