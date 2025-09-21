@@ -1,0 +1,576 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Header from '~/components/widgets/Header.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import AboutOrbit from '~/components/widgets/AboutOrbit.astro';
+import { getPermalink } from '~/utils/permalinks';
+import heroVideo from '~/assets/video/video.mp4';
+
+const metadata = {
+  title: 'Xavier Fang — Portfolio',
+};
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="header">
+    <Header
+      links={[
+        { text: 'About', href: '#about' },
+        { text: 'Key Projects', href: '#keyprojects' },
+        { text: 'Education', href: '#education' },
+        { text: 'Projects', href: '#projects' },
+        { text: 'Awards', href: '#awards' },
+        { text: 'Volunteer', href: '#volunteer' },
+      ]}
+      actions={[
+        {
+          text: 'LinkedIn',
+          href: 'https://www.linkedin.com/in/xavier-fang-083767320',
+        },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+
+  <!-- Hero2 Widget ******************* -->
+
+  <Hero
+    id="hero"
+    title="Xavier Fang"
+    tagline="Master of Professional Mechanical Engineer"
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0">
+        <video
+          src={heroVideo}
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          class="h-full w-full object-cover scale-110 filter blur-[15px] opacity-40"
+        ></video>
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/25 via-primary/15 to-transparent"></div>
+        <div class="absolute inset-0 pointer-events-none [mask-image:radial-gradient(60%_60%_at_50%_30%,white,transparent)]"></div>
+      </div>
+    </Fragment>
+    <Fragment slot="subtitle">
+      JUST a Master of Professional Mechanical Engineering student at the University of Technology Sydney. 
+      <br />
+      <br />
+      Finite Element Analysis · Computational Fluid Dynamics
+      <br />
+      Computer-Aided Engineering · Full-Stack Development
+    </Fragment>
+  </Hero>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="about"
+    columns={3}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h2>
+      <p>
+        I'm Xavier Fang, currently pursuing an MPE (Mechanics) at UTS. My background spans mechanical design and
+        automation with growing depth in software engineering. I enjoy building analytical systems that bridge
+        engineering and software — from signal processing and computer vision to finite element solvers.
+      </p>
+      <br />
+      <p>
+        Recently I built Scopix — a clinical analysis platform integrating respiratory oscillometry signals with
+        laryngoscopy video analytics. My toolset includes Python, TypeScript/React/Electron, Rust, and engineering tools
+        like SolidWorks, ANSYS, and Gmsh.
+      </p>
+    </Fragment>
+
+    <Fragment slot="image">
+      <!-- Replaces the right-side image with a themed widget -->
+      <div class="mx-auto max-w-sm">
+        <AboutOrbit />
+      </div>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-gradient-to-t from-blue-50 to-transparent dark:from-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Content
+    id="keyprojects"
+    title="Key Projects"
+    subtitle="Representative projects demonstrating applied algorithms, analytical methods, and developer experience."
+    isReversed
+    items={[
+      {
+        title: 'Description:',
+        description: 'Designed and implemented a biomedical analysis platform integrating respiratory signal processing and laryngoscopic video analysis; developed algorithms for respiratory cycle segmentation and impedance feature extraction, built frame capture and laryngeal angle/area analysis modules, enabling accurate respiratory assessment and interactive visualization for clinical research.',
+      },
+      {
+        title: 'Role:',
+        description: 'Owned end-to-end development for signal-processing modules; co-designed system architecture with a 4-person team;',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80',
+      alt: 'Archive browsing UI',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Learn more',
+      icon: 'tabler:chevron-right',
+      href: '#',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 1 : <br /><span class="text-2xl">Scopix</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    id="experience"
+    title="Work experience"
+    items={[
+      {
+        title:
+          'Full‑Stack Software Engineer Intern <br /> <span class="font-normal">Optik Consultancy, Sydney, Australia</span> <br /> <span class="text-sm font-normal">May 2025 – Aug 2025</span>',
+        description: `Owned end‑to‑end development for signal‑processing modules and co‑designed system architecture. <br />
+          Built a clinical analysis platform integrating respiratory oscillometry signals and laryngoscopy videos for early ILO diagnosis. <br />
+          Implemented phase‑specific impedance extraction using Python (NumPy/Pandas) and OpenCV‑based laryngeal analytics. <br />
+          Delivered a modular FastAPI backend and Electron + React + TypeScript desktop app for clinical users.`,
+        icon: 'tabler:briefcase',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  >
+
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+  </Fragment>
+    
+  </Steps>
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    id="education"
+    title="Education"
+    items={[
+      {
+        title: `Master of Professional Engineering (Mechanics) <br /> <span class=\"font-normal\">University of Technology Sydney</span> <br /> <span class=\"text-sm font-normal\">Feb 2024 – Present · Sydney, Australia</span>`,
+        description: `Coursework: Finite Element Analysis, Computational Fluid Dynamics. <br /> Capstone: heat conduction analysis and structural topology optimization of heat sinks.`,
+        icon: 'tabler:school',
+      },
+      {
+        title: `B.Eng. Mechanical Design, Manufacturing & Automation <br /> <span class=\"font-normal\">Xi'an Kedagaoxin University</span> <br /> <span class=\"text-sm font-normal\">Sep 2019 – Jul 2023 · Xi'an, China</span>`,
+        description: `Distinction average. Core modules in mechanical design, control systems, and manufacturing automation.`,
+        icon: 'tabler:school',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  >
+  
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+  </Fragment>
+    
+  </Steps>
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    title="Skills"
+    subtitle="A blend of engineering foundations and modern software tooling."
+    columns={3}
+    defaultIcon="tabler:point-filled"
+    items={[
+      {
+        title: 'Engineering & CAD',
+        description: 'SolidWorks, AutoCAD, ANSYS, Matlab, Elmerfem, Gmsh, ParaView, FreeCAD',
+      },
+      {
+        title: 'Programming',
+        description: 'Python, Shell, JavaScript, TypeScript, Rust',
+      },
+      {
+        title: 'Tools & Platforms',
+        description: 'Git, Docker, React, Linux, Figma, Electron',
+      },
+      {
+        title: 'Soft skills',
+        description: 'Ownership, collaboration, systems thinking, problem solving, analytical mindset, adaptability',
+      },
+    ]}
+  >
+  
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+  </Fragment>
+    
+  </Features3>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="projects"
+    title="Personal Projects"
+    subtitle="Independent projects demonstrating problem-solving with applied algorithms, analytical techniques, and developer tools."
+    isReversed
+    items={[
+      {
+        title: 'Description:',
+        description: 'Implementing core modules for mesh handling, finite element spaces, and global stiffness matrix assembly. <br /><br /> Designed and integrated multiple boundary condition enforcement strategies (strong, penalty, Lagrange, and Nitsche methods). <br /><br /> Implemented boundary operators for Dirichlet, Neumann, Robin, symmetry, periodic, and contact conditions.',
+      },
+      {
+        title: 'Tech Stack:',
+        description: 'Python, NumPy, SciPy',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1658248165252-71e116af1b34?ixlib=rb-4.0.3&auto=format&fit=crop&w=928&q=80',
+      alt: 'Video streaming',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Learn more',
+      icon: 'tabler:chevron-right',
+      href: '#',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 1 : <br /><span class="text-2xl">Finite Element Numerical Solver for Linear Elasticity</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: 'Designed and implemented a FEM heat-conduction solver supporting mixed elements, multi-material (including temperature-dependent and tensor conductivity) and multiple boundary conditions (Dirichlet, Neumann, Robin, radiation); <br /><br /> Uses implicit transient Newton solves with sparse linear solves.',
+      },
+      {
+        title: 'Tech Stack:',
+        description: 'Python, NumPy, SciPy',
+      },
+    ]}
+    image={{
+      src: 'https://plus.unsplash.com/premium_photo-1683288295841-782fa47e4770?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80',
+      alt: 'FEM visualization',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Learn more',
+      icon: 'tabler:chevron-right',
+      href: '#',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 2 : <br /><span class="text-2xl">Finite Element Numerical Solver for Thermal Conduction</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: 'Designed and implemented a FEM heat-conduction solver supporting mixed elements, multi-material (including temperature-dependent and tensor conductivity) and multiple boundary conditions (Dirichlet, Neumann, Robin, radiation); <br /><br /> Uses implicit transient Newton solves with sparse linear solves.',
+      },
+      {
+        title: 'Tech Stack:',
+        description: 'Python, GTK4, Libadwaita',
+      },
+    ]}
+    image={{
+      src: 'https://plus.unsplash.com/premium_photo-1683288295841-782fa47e4770?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80',
+      alt: 'FEM visualization',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Learn more',
+      icon: 'tabler:chevron-right',
+      href: '#',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 3 : <br /><span class="text-2xl">VeeCast</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: 'Implemented smooth video previews, dual seek strategy (fast vs accurate), and hardware-accelerated decoding. <br /><br /> Designed responsive UI with asynchronous thumbnail generation, efficient thread management, and GPU-optimized rendering pipelines. Ensured maintainability, stability, and responsive user experience.',
+      },
+      {
+        title: 'Tech Stack:',
+        description: 'Python, GTK4, Libadwaita, GStreamer',
+      },
+    ]}
+    image={{
+      src: 'https://plus.unsplash.com/premium_photo-1683288295841-782fa47e4770?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80',
+      alt: 'FEM visualization',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Learn more',
+      icon: 'tabler:chevron-right',
+      href: '#',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 4 : <br /><span class="text-2xl">PrevueGrid</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: 'A cross-platform desktop applicationto provide a fast and minimal interface for browsing Nerd Font glyphs. <br /><br /> Integrated fontTools for efficient glyph name extraction. <br /><br /> Designed features including font family selection, searchable glyph filtering, and click-to-copy functionality.',
+      },
+      {
+        title: 'Tech Stack:',
+        description: 'Python, GTK4, Libadwaita',
+      },
+    ]}
+    image={{
+      src: 'https://plus.unsplash.com/premium_photo-1683288295841-782fa47e4770?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80',
+      alt: 'FEM visualization',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Learn more',
+      icon: 'tabler:chevron-right',
+      href: '#',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 5 : <br /><span class="text-2xl">Iconarium</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: 'Designed and implemented a fingerprint manager integrated with fprintd, supporting enrollment, listing, and deletion through a responsive interface.',
+      },
+      {
+        title: 'Tech Stack:',
+        description: 'Python, GTK4, Libadwaita',
+      },
+    ]}
+    image={{
+      src: 'https://plus.unsplash.com/premium_photo-1683288295841-782fa47e4770?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80',
+      alt: 'FEM visualization',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Learn more',
+      icon: 'tabler:chevron-right',
+      href: '#',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 6 : <br /><span class="text-2xl">FprintDesk</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: 'Developed a graphical interface for the ratarmount tool. Designed intuitive workflows to mount and browse compressed archives, folders, and merged views with recursive archive support. Built service layers for shell integration, robust error handling, and multi-strategy unmount operations. Created a responsive UI, including log panels for diagnostics.',
+      },
+      {
+        title: 'Tech Stack:',
+        description: 'Python, GTK4, Libadwaita',
+      },
+    ]}
+    image={{
+      src: 'https://plus.unsplash.com/premium_photo-1683288295841-782fa47e4770?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80',
+      alt: 'FEM visualization',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Learn more',
+      icon: 'tabler:chevron-right',
+      href: '#',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 7 : <br /><span class="text-2xl">Ratarmount GUI</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: 'Built an aubio-based audio beat and key detector with both a GUI and a CLI; implemented background-threaded to keep the UI responsive, computed BPM and per-beat timestamps, accumulated a 12-bin pitch-class histogram, and applied Krumhansl–Schmuckler correlation for key estimation.',
+      },
+      {
+        title: 'Tech Stack:',
+        description: 'Python, GTK4, Libadwaita',
+      },
+    ]}
+    image={{
+      src: 'https://plus.unsplash.com/premium_photo-1683288295841-782fa47e4770?ixlib=rb-4.0.3&auto=format&fit=crop&w=870&q=80',
+      alt: 'FEM visualization',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Learn more',
+      icon: 'tabler:chevron-right',
+      href: '#',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 8 : <br /><span class="text-2xl">BeatPulse</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+
+  <!-- Awards -->
+  <Steps
+    id="awards"
+    title="Awards"
+    items={[
+      {
+        title: 'Excellence Award — College Student Mechanical Design & Innovation Competition <br /> <span class="font-normal">Xi\'an Kedagaoxin University</span> <br /> <span class="text-sm font-normal">2022</span>',
+        description: 'Led detailed design with research and critical analysis; coordinated cross‑functional teamwork, task delegation, and schedules across the project lifecycle.',
+        icon: 'tabler:award',
+      },
+      {
+        title: 'University Second‑Class Academic Excellence Scholarship <br /> <span class="font-normal">Xi\'an Kedagaoxin University</span> <br /> <span class="text-sm font-normal">2020</span>',
+        description: 'Recognized for outstanding academic performance and contributions to university initiatives; maintained a distinction average while participating in engineering projects and competitions.',
+        icon: 'tabler:award',
+      },
+      {
+        title: 'Award for Excellence in Organization \& Discipline <br /> <span class="font-normal">Xi\'an Kedagaoxin University</span> <br /> <span class="text-sm font-normal">2019</span>',
+        description: 'Honored as an Outstanding Individual in Internal Affairs during the university’s freshman orientation and training program, recognizing exceptional discipline, attention to detail, and commitment to organizational standards.',
+        icon: 'tabler:award',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  >
+  
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+  </Fragment>
+    
+  </Steps>
+
+  <!-- Volunteer -->
+  <Steps
+    id="volunteer"
+    title="Volunteer Experience"
+    items={[
+      {
+        title: 'On‑Course Marshal — Sydney Half Marathon <br /> <span class="font-normal">Sydney Olympic Park, Australia</span> <br /> <span class="text-sm font-normal">Aug 2024</span>',
+        description: 'Ensured participants followed approved routes and supported safety and flow; collaborated with staff for crowd control, assisting 1,600+ participants.',
+        icon: 'tabler:heart-handshake',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  >
+  
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+  </Fragment>
+    
+  </Steps>
+
+  <!-- Testimonials Widget *********** -->
+  
